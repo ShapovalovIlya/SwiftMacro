@@ -11,7 +11,7 @@ let testMacros: [String: Macro.Type] = [
 ]
 #endif
 
-final class SwiftMacroTests: XCTestCase {
+final class StringifyMacroTests: XCTestCase {
     func testMacro() throws {
         #if canImport(SwiftMacroMacros)
         assertMacroExpansion(
