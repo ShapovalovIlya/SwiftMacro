@@ -1,3 +1,5 @@
+import Foundation
+
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
@@ -9,3 +11,6 @@
 /// produces a tuple `(x + y, "x + y")`.
 @freestanding(expression)
 public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "SwiftMacroMacros", type: "StringifyMacro")
+
+@freestanding(expression)
+public macro URL(_ stringLiteral: String) -> URL = #externalMacro(module: "SwiftMacroMacros", type: "URLMacro")
