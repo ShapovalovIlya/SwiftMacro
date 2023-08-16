@@ -10,7 +10,7 @@ import Foundation
 ///
 /// produces a tuple `(x + y, "x + y")`.
 @freestanding(expression)
-public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "SwiftMacroMacros", type: "StringifyMacro")
+public macro stringify<T>(_ value: T) -> (T, String) = #externalMacro(module: "Macros", type: "StringifyMacro")
 
 @freestanding(expression)
-public macro URL(_ stringLiteral: String) -> URL = #externalMacro(module: "SwiftMacroMacros", type: "URLMacro")
+public macro URL(_ stringLiteral: String) -> URL = #externalMacro(module: "Macros", type: "URLMacro")

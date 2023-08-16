@@ -9,14 +9,14 @@ let package = Package(
     platforms: [.macOS(.v10_15), .iOS(.v13), .tvOS(.v13), .watchOS(.v6), .macCatalyst(.v13)],
     products: [
         .library(name: "SwiftMacro", targets: ["SwiftMacro"]),
-        .executable(name: "SwiftMacroClient", targets: ["SwiftMacroClient"]),
+        .executable(name: "Client", targets: ["Client"]),
     ],
     dependencies: [
         .package(url: "https://github.com/apple/swift-syntax.git", from: "509.0.0-swift-5.9-DEVELOPMENT-SNAPSHOT-2023-04-25-b"),
     ],
     targets: [
         .macro(
-            name: "SwiftMacroMacros",
+            name: "Macros",
             dependencies: [
                 .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
                 .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
@@ -24,16 +24,16 @@ let package = Package(
         ),
 
         // Library that exposes a macro as part of its API, which is used in client programs.
-        .target(name: "SwiftMacro", dependencies: ["SwiftMacroMacros"]),
+        .target(name: "SwiftMacro", dependencies: ["Macros"]),
 
         // A client of the library, which is able to use the macro in its own code.
-        .executableTarget(name: "SwiftMacroClient", dependencies: ["SwiftMacro"]),
+        .executableTarget(name: "Client", dependencies: ["SwiftMacro"]),
 
         // A test target used to develop the macro implementation.
         .testTarget(
             name: "SwiftMacroTests",
             dependencies: [
-                "SwiftMacroMacros",
+                "Macros",
                 .product(name: "SwiftSyntaxMacrosTestSupport", package: "swift-syntax"),
             ]
         ),

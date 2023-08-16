@@ -10,7 +10,7 @@ import SwiftSyntaxMacrosTestSupport
 import XCTest
 
 #if canImport(SwiftMacroMacros)
-import SwiftMacroMacros
+import Macros
 
 let urlMacroTest: [String: Macro.Type] = [
     "URL": URLMacro.self,
